@@ -121,7 +121,7 @@ class Game {
 			}
 		}
 	}
-	createObstacles = () => {
+	placeObstacles = () => {
 		// creating number of walls
 		let numberOfObstaclesCreated = 0;
 		while (numberOfObstaclesCreated < 10) {
@@ -141,7 +141,7 @@ class Game {
 
 		}
 	};
-	createWeapons = () => {
+	placeWeapons = () => {
 		let numberOfCreatedWeapons = 0;
 		while (numberOfCreatedWeapons < 4) {
 			// getting random cell selections by (x,y)
@@ -159,7 +159,7 @@ class Game {
 			}
 		}
 	};
-	createPlayers = () => {
+	placePlayers = () => {
 		// getting random cell selections by (x,y)
 		// player 1
 		let numberOfPlayersCreated = 0 ;
