@@ -206,5 +206,15 @@ class Game {
 		);
 	}
 
+	/**
+	 *
+	 * @returns {Player[]}
+	 */
+	initializePlayers() {
+		const p1 = new Player('player_one','player1' , true) ;
+		const p2 = new Player('player_two','player2',false)
+		return [p1,p2] ;
+	}
+
 
 }
