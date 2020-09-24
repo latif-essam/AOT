@@ -2,6 +2,11 @@
 const player1 = document.getElementById("health1");
 const player2 = document.getElementById("health2");
 
+class ItemTypes {
+	static PLAYER = 'PLAYER';
+	static OBSTACLE = 'OBSTACLE';
+	static WEAPON = 'WEAPON';
+}
 /**
  * store the position of an item using its x and y
  */
