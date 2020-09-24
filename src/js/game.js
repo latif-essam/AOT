@@ -2,6 +2,25 @@
 const player1 = document.getElementById("health1");
 const player2 = document.getElementById("health2");
 
+// store all the weapons and their power
+const weapons = [
+	{
+		name: 'weapon1',
+		power: 20,
+	},
+	{
+		name: 'weapon2',
+		power: 50,
+	},
+	{
+		name: 'weapon3',
+		power: 70,
+	},
+	{
+		name: 'weapon4',
+		power: 35,
+	},
+];
 class ItemTypes {
 	static PLAYER = 'PLAYER';
 	static OBSTACLE = 'OBSTACLE';
