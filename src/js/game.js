@@ -51,3 +51,20 @@ class Weapon {
 		this.name = name ;
 	}
 }
+class Player {
+	/**
+	 *
+	 * @param name {string}
+	 * @param title {string}
+	 * @param turn {boolean}
+	 */
+	constructor(name,title,turn) {
+		this.name = name ;
+		this.title = title ;
+		this.health = 100 ;
+		this.power = 10 ;
+		this.img = '' ;
+		this.turn = turn ;
+		this.position = null ;
+	}
+}
