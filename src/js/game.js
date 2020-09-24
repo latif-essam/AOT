@@ -38,3 +38,16 @@ class BoardBox {
 		this.player = null ;
 	}
 }
+
+class Weapon {
+	/**
+	 * @param name {string}
+	 * @param position {ItemPosition}
+	 * @param power {number}
+	 */
+	constructor(name,position, power) {
+		this.position = position;
+		this.power = power;
+		this.name = name ;
+	}
+}
