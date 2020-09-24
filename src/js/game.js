@@ -1,6 +1,6 @@
 
-const player1 = document.getElementById("health1");
-const player2 = document.getElementById("health2");
+const player1HealthElement = document.getElementById("health1");
+const player2HealthElement = document.getElementById("health2");
 
 // store all the weapons and their power
 const weapons = [
@@ -232,3 +232,17 @@ game.generateMap() ;
 game.placeObstacles(15);
 game.placeWeapons();
 game.placePlayers();
+
+// select the element of each player own board
+const player1StatusSection = document.getElementById('player1');
+const player2StatusSection = document.getElementById('player2');
+const Player1PowerElement = document.querySelector('#power1');
+const Player2PowerElement = document.querySelector('#power2');
+
+const setPlayerValues = () => {
+	player1HealthElement.innerHTML = game.players[0].health.toString();
+	player2HealthElement.innerHTML = game.players[1].health.toString();
+	Player1PowerElement.innerHTML = game.players[0].power.toString();
+	Player2PowerElement.innerHTML = game.players[1].power.toString();
+};
+setPlayerValues();
