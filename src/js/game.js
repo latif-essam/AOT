@@ -141,5 +141,23 @@ class Game {
 
 		}
 	};
+	createWeapons = () => {
+		let numberOfCreatedWeapons = 0;
+		while (numberOfCreatedWeapons < 4) {
+			// getting random cell selections by (x,y)
+			const randomX = Utils.randomNumber(1, 8);
+			const randomY = Utils.randomNumber(1, 8);
+			const box = this.getBoxItemAtPosition(randomX, randomY);
+			if (box.isEmpty) {
+				const currentWeapon = weapons[numberOfCreatedWeapons]
+				box.isEmpty = false;
+				box.filledWith = ItemTypes.WEAPON ;
+				box.weapon = new Weapon(currentWeapon.name,
+					new ItemPosition(box.position.x,box.position.y),currentWeapon.power)
+				box.element.classList.add(currentWeapon.name);
+				numberOfCreatedWeapons++;
+			}
+		}
+	};
 
 }
