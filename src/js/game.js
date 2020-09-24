@@ -1,6 +1,5 @@
-
-const player1HealthElement = document.getElementById("health1");
-const player2HealthElement = document.getElementById("health2");
+const player1HealthElement = document.getElementById('health1');
+const player2HealthElement = document.getElementById('health2');
 
 // store all the weapons and their power
 const weapons = [
@@ -64,8 +63,8 @@ class BoardBox {
 		this.index = index;
 		this.isEmpty = true;
 		this.filledWith = null;
-		this.weapon = null ;
-		this.player = null ;
+		this.weapon = null;
+		this.player = null;
 	}
 }
 
@@ -76,11 +75,11 @@ class Weapon {
 	 * @param power {number} the weapon power
 	 * @param index {number} the weapon index at the weapons Array;
 	 */
-	constructor(name,position, power,index) {
+	constructor(name, position, power, index) {
 		this.position = position;
 		this.power = power;
-		this.name = name ;
-		this.index = index ;
+		this.name = name;
+		this.index = index;
 	}
 }
 class Player {
@@ -90,15 +89,15 @@ class Player {
 	 * @param title {string}
 	 * @param turn {boolean}
 	 */
-	constructor(name,title,turn) {
-		this.name = name ;
-		this.title = title ;
-		this.health = 100 ;
-		this.power = 10 ;
-		this.img = '' ;
-		this.turn = turn ;
-		this.position = null ;
-		this.currentBox = null ;
+	constructor(name, title, turn) {
+		this.name = name;
+		this.title = title;
+		this.health = 100;
+		this.power = 10;
+		this.img = '';
+		this.turn = turn;
+		this.position = null;
+		this.currentBox = null;
 		this.currentWeapon = null;
 	}
 }
@@ -110,7 +109,7 @@ class Game {
 		 * @type {BoardBox[]}
 		 */
 		this.boxes = [];
-		this.players = this.initializePlayers()
+		this.players = this.initializePlayers();
 	}
 	generateMap() {
 		let itemIndex = 0;
@@ -138,16 +137,13 @@ class Game {
 
 			const randomX = Utils.randomNumber(1, 8);
 			const randomY = Utils.randomNumber(1, 8);
-			const box = this.getBoxItemAtPosition(randomX,randomY) ;
-			if (
-				box.isEmpty
-			) {
+			const box = this.getBoxItemAtPosition(randomX, randomY);
+			if (box.isEmpty) {
 				box.isEmpty = false;
 				box.filledWith = ItemTypes.OBSTACLE;
 				box.element.classList.add('unavailable');
 				numberOfObstaclesCreated++;
 			}
-
 		}
 	};
 	placeWeapons = () => {
@@ -158,11 +154,15 @@ class Game {
 			const randomY = Utils.randomNumber(1, 8);
 			const box = this.getBoxItemAtPosition(randomX, randomY);
 			if (box.isEmpty) {
-				const currentWeapon = weapons[numberOfCreatedWeapons]
+				const currentWeapon = weapons[numberOfCreatedWeapons];
 				box.isEmpty = false;
-				box.filledWith = ItemTypes.WEAPON ;
-				box.weapon = new Weapon(currentWeapon.name,
-					new ItemPosition(box.position.x,box.position.y),currentWeapon.power,numberOfCreatedWeapons)
+				box.filledWith = ItemTypes.WEAPON;
+				box.weapon = new Weapon(
+					currentWeapon.name,
+					new ItemPosition(box.position.x, box.position.y),
+					currentWeapon.power,
+					numberOfCreatedWeapons,
+				);
 				box.element.classList.add(currentWeapon.name);
 				numberOfCreatedWeapons++;
 			}
@@ -171,39 +171,44 @@ class Game {
 	placePlayers = () => {
 		// getting random cell selections by (x,y)
 		// player 1
-		let numberOfPlayersCreated = 0 ;
-		while (numberOfPlayersCreated < 2 ){
+		let numberOfPlayersCreated = 0;
+		while (numberOfPlayersCreated < 2) {
 			// player 1
 			const randomXPlayer1 = Utils.randomNumber(0, 9);
 			const randomYPlayer1 = Utils.randomNumber(0, 1);
 			// player 2
 			const randomXPlayer2 = Utils.randomNumber(1, 9);
-			const  randomYPlayer2 = Utils.randomNumber(9, 0);
+			const randomYPlayer2 = Utils.randomNumber(9, 0);
 
-			const box1 = this.getBoxItemAtPosition(randomXPlayer1,randomYPlayer1) ;
-			const box2 = this.getBoxItemAtPosition(randomXPlayer2,randomYPlayer2);
+			const box1 = this.getBoxItemAtPosition(randomXPlayer1, randomYPlayer1);
+			const box2 = this.getBoxItemAtPosition(randomXPlayer2, randomYPlayer2);
 			if (box1.isEmpty) {
-				box1.isEmpty = false ;
-				box1.element.classList.add(this.players[0].name)
-				box1.filledWith = ItemTypes.PLAYER ;
-				box1.player = this.players[0].title ;
+				box1.isEmpty = false;
+				box1.element.classList.add(this.players[0].name);
+				box1.filledWith = ItemTypes.PLAYER;
+				box1.player = this.players[0].title;
 				// add player 1  new position
-				this.players[0].position = new ItemPosition(box1.position.x , box1.position.y)
-				this.players[0].currentBox = box1 ;
-				numberOfPlayersCreated++ ;
+				this.players[0].position = new ItemPosition(
+					box1.position.x,
+					box1.position.y,
+				);
+				this.players[0].currentBox = box1;
+				numberOfPlayersCreated++;
 			}
-			if(box2.isEmpty){
-				box2.isEmpty = false ;
-				box2.element.classList.add(this.players[1].name)
-				box2.filledWith = ItemTypes.PLAYER ;
-				box2.player = this.players[1].title ;
+			if (box2.isEmpty) {
+				box2.isEmpty = false;
+				box2.element.classList.add(this.players[1].name);
+				box2.filledWith = ItemTypes.PLAYER;
+				box2.player = this.players[1].title;
 				// add player 2 new position
-				this.players[1].position = new ItemPosition(box2.position.x , box2.position.y)
-				this.players[1].currentBox = box2 ;
-				numberOfPlayersCreated++ ;
+				this.players[1].position = new ItemPosition(
+					box2.position.x,
+					box2.position.y,
+				);
+				this.players[1].currentBox = box2;
+				numberOfPlayersCreated++;
 			}
 		}
-
 	};
 	/**
 	 *
@@ -222,15 +227,14 @@ class Game {
 	 * @returns {Player[]}
 	 */
 	initializePlayers() {
-		const p1 = new Player('player_one','player1' , true) ;
-		const p2 = new Player('player_two','player2',false)
-		return [p1,p2] ;
+		const p1 = new Player('player_one', 'player1', true);
+		const p2 = new Player('player_two', 'player2', false);
+		return [p1, p2];
 	}
-
 }
 // generate new game
-const game = new Game() ;
-game.generateMap() ;
+const game = new Game();
+game.generateMap();
 game.placeObstacles(15);
 game.placeWeapons();
 game.placePlayers();
