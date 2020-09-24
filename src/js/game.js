@@ -71,14 +71,16 @@ class BoardBox {
 
 class Weapon {
 	/**
-	 * @param name {string}
-	 * @param position {ItemPosition}
-	 * @param power {number}
+	 * @param name {string} the weapon name used for css classes
+	 * @param position {ItemPosition} the weapon position (x,y)
+	 * @param power {number} the weapon power
+	 * @param index {number} the weapon index at the weapons Array;
 	 */
-	constructor(name,position, power) {
+	constructor(name,position, power,index) {
 		this.position = position;
 		this.power = power;
 		this.name = name ;
+		this.index = index ;
 	}
 }
 class Player {
@@ -160,7 +162,7 @@ class Game {
 				box.isEmpty = false;
 				box.filledWith = ItemTypes.WEAPON ;
 				box.weapon = new Weapon(currentWeapon.name,
-					new ItemPosition(box.position.x,box.position.y),currentWeapon.power)
+					new ItemPosition(box.position.x,box.position.y),currentWeapon.power,numberOfCreatedWeapons)
 				box.element.classList.add(currentWeapon.name);
 				numberOfCreatedWeapons++;
 			}
