@@ -121,5 +121,25 @@ class Game {
 			}
 		}
 	}
+	createObstacles = () => {
+		// creating number of walls
+		let numberOfObstaclesCreated = 0;
+		while (numberOfObstaclesCreated < 10) {
+			// getting random cell selections by (x,y)
+
+			const randomX = Utils.randomNumber(1, 8);
+			const randomY = Utils.randomNumber(1, 8);
+			const box = this.getBoxItemAtPosition(randomX,randomY) ;
+			if (
+				box.isEmpty
+			) {
+				box.isEmpty = false;
+				box.filledWith = ItemTypes.OBSTACLE;
+				box.element.classList.add('unavailable');
+				numberOfObstaclesCreated++;
+			}
+
+		}
+	};
 
 }
