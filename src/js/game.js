@@ -159,5 +159,40 @@ class Game {
 			}
 		}
 	};
+	createPlayers = () => {
+		// getting random cell selections by (x,y)
+		// player 1
+		let numberOfPlayersCreated = 0 ;
+		while (numberOfPlayersCreated < 2 ){
+			// player 1
+			const randomXPlayer1 = Utils.randomNumber(0, 9);
+			const randomYPlayer1 = Utils.randomNumber(0, 1);
+			// player 2
+			const randomXPlayer2 = Utils.randomNumber(1, 9);
+			const  randomYPlayer2 = Utils.randomNumber(9, 0);
+
+			const box1 = this.getBoxItemAtPosition(randomXPlayer1,randomYPlayer1) ;
+			const box2 = this.getBoxItemAtPosition(randomXPlayer2,randomYPlayer2);
+			if (box1.isEmpty) {
+				box1.isEmpty = false ;
+				box1.element.classList.add(this.players[0].name)
+				box1.filledWith = ItemTypes.PLAYER ;
+				box1.player = this.players[0].title ;
+				// add player 1  new position
+				this.players[0].position = new ItemPosition(box1.position.x , box1.position.y)
+				numberOfPlayersCreated++ ;
+			}
+			if(box2.isEmpty){
+				box2.isEmpty = false ;
+				box2.element.classList.add(this.players[1].name)
+				box2.filledWith = ItemTypes.PLAYER ;
+				box2.player = this.players[1].title ;
+				// add player 2 new position
+				this.players[1].position = new ItemPosition(box2.position.x , box2.position.y)
+				numberOfPlayersCreated++ ;
+			}
+		}
+
+	};
 
 }
