@@ -96,6 +96,8 @@ class Player {
 		this.img = '' ;
 		this.turn = turn ;
 		this.position = null ;
+		this.currentBox = null ;
+		this.currentWeapon = null;
 	}
 }
 class Game {
@@ -121,10 +123,15 @@ class Game {
 			}
 		}
 	}
-	placeObstacles = () => {
+
+	/**
+	 *
+	 * @param numberOfObstacles {number} number of obstacles to place in the board
+	 */
+	placeObstacles = (numberOfObstacles) => {
 		// creating number of walls
 		let numberOfObstaclesCreated = 0;
-		while (numberOfObstaclesCreated < 10) {
+		while (numberOfObstaclesCreated < numberOfObstacles) {
 			// getting random cell selections by (x,y)
 
 			const randomX = Utils.randomNumber(1, 8);
@@ -180,6 +187,7 @@ class Game {
 				box1.player = this.players[0].title ;
 				// add player 1  new position
 				this.players[0].position = new ItemPosition(box1.position.x , box1.position.y)
+				this.players[0].currentBox = box1 ;
 				numberOfPlayersCreated++ ;
 			}
 			if(box2.isEmpty){
@@ -189,6 +197,7 @@ class Game {
 				box2.player = this.players[1].title ;
 				// add player 2 new position
 				this.players[1].position = new ItemPosition(box2.position.x , box2.position.y)
+				this.players[1].currentBox = box2 ;
 				numberOfPlayersCreated++ ;
 			}
 		}
@@ -216,5 +225,10 @@ class Game {
 		return [p1,p2] ;
 	}
 
-
 }
+// generate new game
+const game = new Game() ;
+game.generateMap() ;
+game.placeObstacles(15);
+game.placeWeapons();
+game.placePlayers();
