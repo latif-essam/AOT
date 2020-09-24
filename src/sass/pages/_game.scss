@@ -1,96 +1,72 @@
-nav {
-  background: url("./../../assets/flash-2568383_1920.jpg");
-}
-
-nav a {
-  color: #fff;
-  font-size: large;
-}
-nav a:hover {
-  color: gold;
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: indianred;
-}
-
+// player card
 .player {
   text-align: center;
   border-radius: 10px;
   padding: 5px;
+  & p {
+    font-size: large;
+    color: white;
+  }
 }
-.player p {
-  font-size: large;
-  color: white;
-}
-
 .game-container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   margin: 15px 0;
-}
-.game-container .grid-item {
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  text-align: center;
-  outline: 2px solid rgba(128, 128, 128, 0.2);
-  margin: 1px;
-}
-@media screen and (min-width: 560px) {
-  .game-container .grid-item {
-    padding: 15px 10px;
-    width: 70px;
-    height: 70px;
+  & .grid-item {
+    @media screen and(min-width:560px) {
+      padding: 15px 10px;
+      width: 50px;
+      height: 50px;
+    }
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    outline: 2px solid rgba(128, 128, 128, 0.2);
+    margin: 1px;
   }
 }
-
+// setting the walls
 .unavailable {
   background-image: url("./../../assets/wall.png");
   background-size: cover;
 }
 
+// setting the weapones
 .weapon1 {
   background-image: url("./../../assets/sword.svg");
   background-size: cover;
 }
-
 .weapon2 {
   background-image: url("./../../assets/sword2.png");
   background-size: cover;
 }
-
 .weapon3 {
   background-image: url("./../../assets/titan2.png");
   background-size: cover;
 }
-
 .weapon4 {
   background-image: url("./../../assets/titan1.png");
   background-size: cover;
 }
 
+// setting players
 .player_one {
   background-image: url("../../assets/mikasa.png");
   background-size: cover;
   border: 2px solid dodgerblue;
 }
-
 .player_two {
   background-image: url("../../assets/levay.png");
   background-size: cover;
   border: 2px solid red;
 }
 
+// set available moves
 .vet:hover {
   border: 2px solid gold;
 }
-
 .vine:hover {
   background-color: green;
 }
-
-/*# sourceMappingURL=style.css.map */
