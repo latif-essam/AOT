@@ -97,4 +97,17 @@ class Game {
 		this.boxes = [];
 		this.players = this.initializePlayers()
 	}
+	generateMap() {
+		let itemIndex = 0;
+		for (let i = 0; i < 10; i++) {
+			for (let j = 0; j < 10; j++) {
+				const element = document.createElement('div');
+				element.className = 'grid-item';
+				const box = new BoardBox(new ItemPosition(i, j), element, itemIndex);
+				this.boxes.push(box);
+				this.container.append(box.element);
+				itemIndex++;
+			}
+		}
+	}
 }
