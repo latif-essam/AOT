@@ -1,0 +1,26 @@
+{
+  "name": "attack-on-titans",
+  "version": "1.0.0",
+  "description": "a board game",
+  "main": "index.js",
+  "dependencies": {
+    "gsap": "^3.5.1",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/latif-essam/AOT.git"
+  },
+  "author": "latif essam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/latif-essam/AOT/issues"
+  },
+  "homepage": "https://github.com/latif-essam/AOT#readme"
+}

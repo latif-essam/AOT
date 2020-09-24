@@ -1,0 +1,31 @@
+$breakpoints: (
+  mobile: 599px,
+);
+$txt-input-palette: (
+  active: (
+    bg: $primary,
+    border: $primary,
+    txt: $white,
+  ),
+  focus: (
+    bg: $primary,
+    border: $primary,
+    txt: $white,
+  ),
+  invalid: (
+    bg: $invalid,
+    border: $white,
+    txt: $white,
+  ),
+);
+$font-color: (
+  orange: cc8624,
+  pink: #cc2475,
+  blue: #2469cc,
+  green: #24cc24,
+);
+// @each $name, $val in $font-color {
+//   .article__heading--#{$name} {
+//     color: $val;
+//   }
+// }
