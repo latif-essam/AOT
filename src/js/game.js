@@ -87,3 +87,14 @@ class Player {
 		this.position = null ;
 	}
 }
+class Game {
+	constructor() {
+		this.container = $('#game-container');
+		/**
+		 *
+		 * @type {BoardBox[]}
+		 */
+		this.boxes = [];
+		this.players = this.initializePlayers()
+	}
+}
