@@ -194,5 +194,17 @@ class Game {
 		}
 
 	};
+	/**
+	 *
+	 * @param x {number}
+	 * @param y {number}
+	 * @returns {BoardBox}
+	 */
+	getBoxItemAtPosition(x, y) {
+		return this.boxes.find(
+			(box) => box.position.x === x && box.position.y === y,
+		);
+	}
+
 
 }
