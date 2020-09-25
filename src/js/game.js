@@ -349,8 +349,23 @@ class Game {
 	getBoxItemWithElement(element) {
 		return this.boxes.find(box=>box.element === element);
 	}
-	clickHandler() {
+	clickHandler = (e)=>{
+		const elementBox = this.getBoxItemWithElement(e.target);
+		this.currentPlayer.currentBox.element.classList.remove(this.currentPlayer.name)
 
+		this.currentPlayer.oldBox = this.currentPlayer.currentBox ;
+		this.currentPlayer.currentBox = elementBox;
+		this.currentPlayer.position.x = elementBox.position.x ;
+		this.currentPlayer.position.y = elementBox.position.y ;
+		elementBox.element.classList.add(this.currentPlayer.name) ;
+		if(elementBox.filledWith === ItemTypes.WEAPON) {
+			this.currentPlayer.oldWeapon = this.currentPlayer.currentWeapon  ;
+			this.currentPlayer.currentWeapon = elementBox.weapon ;
+			elementBox.element.classList.remove(elementBox.weapon.name) ;
+			elementBox.weapon = this.currentPlayer.oldWeapon ;
+			elementBox.element.classList.add(elementBox.weapon.name) ;
+		}
+		this.changeTurns();
 	}
 }
 // generate new game
