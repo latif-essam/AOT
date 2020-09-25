@@ -4,8 +4,8 @@
   "description": "a board game",
   "main": "index.js",
   "dependencies": {
-    "gsap": "^3.5.1",
     "bootstrap": "^4.5.2",
+    "gsap": "^3.5.1",
     "jquery": "^3.5.1"
   },
   "devDependencies": {},

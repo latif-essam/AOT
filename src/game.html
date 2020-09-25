@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AOT: Game Board</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
@@ -17,10 +17,17 @@
         <div class="col-md-2">
           <div id="player1" class="player player__one bg-primary mr-2">
             <p class="player1">player 1</p>
+
             <p class="score">health: <span id="health1"></span></p>
             <p class="score">power: <span id="power1"></span></p>
 
-            <img src="./assets/person.png" alt="player 1" />
+            <img
+              src="./assets/mikasa.png"
+              class="player__icon"
+              alt="player 1"
+            />
+            <button id="attack1" class="fight btn btn-danger">Attack</button>
+            <button id="defend1" class="fight btn btn-warning">Defend</button>
           </div>
         </div>
         <div class="col-md-8">
@@ -32,7 +39,9 @@
             <p class="score">health: <span id="health2"></span></p>
             <p class="score">power: <span id="power2"></span></p>
 
-            <img src="./assets/person.png" alt="player 2" />
+            <img src="./assets/levay.png" class="player__icon" alt="player 2" />
+            <button id="attack2" class="fight btn btn-danger">Attack</button>
+            <button id="defend2" class="fight btn btn-warning">Defend</button>
           </div>
         </div>
       </div>

@@ -7,6 +7,12 @@
     font-size: large;
     color: white;
   }
+  &__icon {
+    min-width: 100;
+
+    width: 150px;
+    max-width: 200px;
+  }
 }
 .game-container {
   display: grid;
@@ -34,6 +40,12 @@
 }
 
 // setting the weapones
+
+.main {
+  background-image: url("./../../assets/halloween.png");
+  background-size: cover;
+}
+
 .weapon1 {
   background-image: url("./../../assets/sword.svg");
   background-size: cover;
@@ -64,9 +76,10 @@
 }
 
 // set available moves
-.vet:hover {
-  border: 2px solid gold;
+.box-hover:hover {
+  background-color: #1c7430;
+  cursor: pointer;
 }
-.vine:hover {
-  background-color: green;
+.fight {
+  display: none;
 }

@@ -25,6 +25,11 @@ nav a:hover {
   font-size: large;
   color: white;
 }
+.player__icon {
+  min-width: 100;
+  width: 150px;
+  max-width: 200px;
+}
 
 .game-container {
   display: grid;
@@ -50,6 +55,11 @@ nav a:hover {
 
 .unavailable {
   background-image: url("./../../assets/wall.png");
+  background-size: cover;
+}
+
+.main {
+  background-image: url("./../../assets/halloween.png");
   background-size: cover;
 }
 
@@ -85,12 +95,13 @@ nav a:hover {
   border: 2px solid red;
 }
 
-.vet:hover {
-  border: 2px solid gold;
+.box-hover:hover {
+  background-color: #1c7430;
+  cursor: pointer;
 }
 
-.vine:hover {
-  background-color: green;
+.fight {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
