@@ -383,6 +383,13 @@ class Game {
 		elementBox.weapon = this.currentPlayer.oldWeapon ;
 		elementBox.element.classList.add(elementBox.weapon.name) ;
 	}
+
+	changeTurns() {
+		this.currentPlayer = this.currentPlayer === this.players[0] ?
+			this.players[1] : this.players[0];
+		this.boxesToMoveIn = this.calculateAvailableBoxes();
+		this.makeHoverEffect();
+	}
 }
 // generate new game
 const game = new Game();
