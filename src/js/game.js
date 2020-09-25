@@ -105,7 +105,9 @@ class Player {
 		this.turn = turn;
 		this.position = null;
 		this.currentBox = null;
-		this.currentWeapon = null;
+		this.currentWeapon = new Weapon('main',null,10,-1) ;
+		this.oldWeapon = null ;
+		this.oldBox = null ;
 	}
 }
 class Game {
