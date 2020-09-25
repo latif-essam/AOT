@@ -2,6 +2,13 @@ const player1HealthElement = document.getElementById('health1');
 const player2HealthElement = document.getElementById('health2');
 
 // store all the weapons and their power
+
+// default and the main weapon for each player
+const defaultWeapon = {
+	name:'main',
+	power:10
+};
+
 const weapons = [
 	{
 		name: 'weapon1',
