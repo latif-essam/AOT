@@ -269,7 +269,7 @@ class Game {
 			const nextTopBox  = this.getBoxItemAtPosition(x-i,y) ;
 
 			if(!nextTopBox) {
-				break ; 
+				break ;
 			}
 			// we can't move if we find obstacles
 			if(nextTopBox && nextTopBox.filledWith === ItemTypes.OBSTACLE) {
@@ -341,6 +341,14 @@ class Game {
 
 	}
 
+	/**
+	 * return a BoardBox with the specified element
+	 * @param element {HTMLElement}
+	 * @returns {BoardBox}
+	 */
+	getBoxItemWithElement(element) {
+		return this.boxes.find(box=>box.element === element);
+	}
 	clickHandler() {
 
 	}
