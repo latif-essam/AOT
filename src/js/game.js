@@ -119,6 +119,11 @@ class Game {
 		 */
 		this.boxes = [];
 		this.players = this.initializePlayers();
+
+		this.generateMap()
+		this.placeObstacles(15);
+		this.placeWeapons();
+		this.placePlayers()
 	}
 	generateMap() {
 		let itemIndex = 0;
@@ -243,10 +248,7 @@ class Game {
 }
 // generate new game
 const game = new Game();
-game.generateMap();
-game.placeObstacles(15);
-game.placeWeapons();
-game.placePlayers();
+
 
 // select the element of each player own board
 const player1StatusSection = document.getElementById('player1');
