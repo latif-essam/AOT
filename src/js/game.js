@@ -124,6 +124,15 @@ class Game {
 		this.placeObstacles(15);
 		this.placeWeapons();
 		this.placePlayers()
+
+		this.currentPlayer = this.players[0] ;
+		/**
+		 *
+		 * @type {HTMLElement[]}
+		 */
+		this.currentElementsToMoveIn = [] ;
+		this.boxesToMoveIn = this.calculateAvailableBoxes() ;
+		this.makeHoverEffect() ;
 	}
 	generateMap() {
 		let itemIndex = 0;
@@ -244,6 +253,96 @@ class Game {
 		const p1 = new Player('player_one', 'player1', true);
 		const p2 = new Player('player_two', 'player2', false);
 		return [p1, p2];
+	}
+
+	calculateAvailableBoxes() {
+		this.clearUIEffects() ;
+		const boxesToMoveIn = {
+			top:[],
+			left:[],
+			right:[],
+			bottom:[]
+		}
+		const {x,y} = this.currentPlayer.currentBox.position ;
+		// availableTopBoxes
+		for(let i = 1 ; i < 4;i++) {
+			const nextTopBox  = this.getBoxItemAtPosition(x-i,y) ;
+
+			if(!nextTopBox) {
+				break ; 
+			}
+			// we can't move if we find obstacles
+			if(nextTopBox && nextTopBox.filledWith === ItemTypes.OBSTACLE) {
+				break ;
+			}
+			if(nextTopBox && (nextTopBox.isEmpty || nextTopBox.filledWith === ItemTypes.WEAPON)) {
+				boxesToMoveIn.top.push(nextTopBox) ;
+				this.currentElementsToMoveIn.push(nextTopBox.element) ;
+			}
+		}
+		// availableBottomBoxes
+		for(let i = 1 ; i < 4;i++) {
+			const nextTopBox  = this.getBoxItemAtPosition(x+i,y) ;
+			// we can't move if we find obstacles
+			if(nextTopBox && nextTopBox.filledWith === ItemTypes.OBSTACLE) {
+				break ;
+			}
+			if(nextTopBox && (nextTopBox.isEmpty || nextTopBox.filledWith === ItemTypes.WEAPON)) {
+				boxesToMoveIn.bottom.push(nextTopBox) ;
+				this.currentElementsToMoveIn.push(nextTopBox.element) ;
+
+			}
+		}
+		// availableLeftBoxes
+		for(let i = 1 ; i < 4;i++) {
+			const nextTopBox  = this.getBoxItemAtPosition(x,y-i) ;
+			// we can't move if we find obstacles
+			if(nextTopBox && nextTopBox.filledWith === ItemTypes.OBSTACLE) {
+				break ;
+			}
+			if(nextTopBox && (nextTopBox.isEmpty || nextTopBox.filledWith === ItemTypes.WEAPON)) {
+				boxesToMoveIn.left.push(nextTopBox) ;
+				this.currentElementsToMoveIn.push(nextTopBox.element) ;
+
+			}
+		}
+		// availableRightBoxes
+		for(let i = 1 ; i < 4;i++) {
+			const nextTopBox  = this.getBoxItemAtPosition(x,y+i) ;
+			// we can't move if we find obstacles
+			if(nextTopBox && nextTopBox.filledWith === ItemTypes.OBSTACLE) {
+				break ;
+			}
+			if(nextTopBox && (nextTopBox.isEmpty || nextTopBox.filledWith === ItemTypes.WEAPON)) {
+				boxesToMoveIn.right.push(nextTopBox) ;
+				this.currentElementsToMoveIn.push(nextTopBox.element) ;
+
+			}
+		}
+		return boxesToMoveIn;
+	}
+
+	makeHoverEffect() {
+		if(this.currentElementsToMoveIn) {
+			this.currentElementsToMoveIn.forEach(element=>{
+				element.classList.add('box-hover')
+				element.addEventListener('click',this.clickHandler);
+			})
+		}
+	}
+	clearUIEffects(){
+		if(this.currentElementsToMoveIn) {
+			this.currentElementsToMoveIn.forEach(element=>{
+				element.classList.remove('box-hover')
+				element.removeEventListener('click',this.clickHandler);
+			})
+		}
+		this.currentElementsToMoveIn = [] ;
+
+	}
+
+	clickHandler() {
+
 	}
 }
 // generate new game
