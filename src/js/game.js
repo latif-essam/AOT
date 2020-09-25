@@ -351,21 +351,37 @@ class Game {
 	}
 	clickHandler = (e)=>{
 		const elementBox = this.getBoxItemWithElement(e.target);
-		this.currentPlayer.currentBox.element.classList.remove(this.currentPlayer.name)
+		this.updatePlayerBox(elementBox) ;
+		if(elementBox.filledWith === ItemTypes.WEAPON) {
+			this.updatePlayerWeapon(elementBox);
+		}
+		this.changeTurns();
+	}
 
+	/**
+	 * update the player current and old box
+	 * @param elementBox {BoardBox}
+	 */
+	updatePlayerBox(elementBox){
+		this.currentPlayer.currentBox.element.classList.remove(this.currentPlayer.name)
 		this.currentPlayer.oldBox = this.currentPlayer.currentBox ;
 		this.currentPlayer.currentBox = elementBox;
 		this.currentPlayer.position.x = elementBox.position.x ;
 		this.currentPlayer.position.y = elementBox.position.y ;
 		elementBox.element.classList.add(this.currentPlayer.name) ;
-		if(elementBox.filledWith === ItemTypes.WEAPON) {
-			this.currentPlayer.oldWeapon = this.currentPlayer.currentWeapon  ;
-			this.currentPlayer.currentWeapon = elementBox.weapon ;
-			elementBox.element.classList.remove(elementBox.weapon.name) ;
-			elementBox.weapon = this.currentPlayer.oldWeapon ;
-			elementBox.element.classList.add(elementBox.weapon.name) ;
-		}
-		this.changeTurns();
+
+	}
+
+	/**
+	 * update the current player current and old weapon
+	 * @param elementBox {BoardBox}
+	 */
+	updatePlayerWeapon(elementBox){
+		this.currentPlayer.oldWeapon = this.currentPlayer.currentWeapon  ;
+		this.currentPlayer.currentWeapon = elementBox.weapon ;
+		elementBox.element.classList.remove(elementBox.weapon.name) ;
+		elementBox.weapon = this.currentPlayer.oldWeapon ;
+		elementBox.element.classList.add(elementBox.weapon.name) ;
 	}
 }
 // generate new game
