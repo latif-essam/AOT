@@ -112,7 +112,7 @@ class Player {
 }
 class Game {
 	constructor() {
-		this.container = $('#game-container');
+		this.container = document.getElementById('game-container');
 		/**
 		 *
 		 * @type {BoardBox[]}
