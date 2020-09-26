@@ -1,5 +1,6 @@
 const player1HealthElement = document.getElementById("health1");
 const player2HealthElement = document.getElementById("health2");
+const player2HealthElement = document.getElementById('health2');
 
 // select the element of each player own board
 const player1StatusSection = document.getElementById("player1");
