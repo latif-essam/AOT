@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  margin: 15px 0;
+  margin: 0px 0px;
   & .grid-item {
     @media screen and(min-width:560px) {
       padding: 15px 10px;
@@ -29,7 +29,7 @@
     height: 30px;
     padding: 5px;
     text-align: center;
-    outline: 2px solid rgba(128, 128, 128, 0.2);
+    border: 2px solid rgba(128, 128, 128, 0.2);
     margin: 1px;
   }
 }
@@ -81,5 +81,25 @@
   cursor: pointer;
 }
 .fight {
+  display: none;
+}
+.box-hover:hover {
+  background-color: #1c7430;
+  cursor: pointer;
+}
+
+.fight__bg1 {
+  background-image: url("./../../assets/bg2.jpg");
+  background-size: cover;
+  min-height: 400px;
+  margin-top: 15px;
+}
+.fight__bg2 {
+  background-image: url("./../../assets/bg1.jpg");
+  background-size: cover;
+  min-height: 400px;
+  margin-top: 15px;
+}
+.fightbg-false {
   display: none;
 }

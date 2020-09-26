@@ -57,6 +57,11 @@ nav a:hover {
   background-image: url("./../../assets/wall.png");
   background-size: cover;
 }
+.main {
+  background-image: url("./../../assets/halloween.png");
+  background-size: cover;
+
+}
 
 .main {
   background-image: url("./../../assets/halloween.png");
@@ -102,6 +107,11 @@ nav a:hover {
 
 .fight {
   display: none;
+}
+
+.box-hover:hover {
+  background-color: #1c7430;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
