@@ -549,9 +549,7 @@ class Game {
 
     player1HealthElement.innerHTML = this.players[0].health;
     player2HealthElement.innerHTML = this.players[1].health;
-    if (this.currentPlayer.health <= 0) {
-      console.log("player win", this.currentPlayer.name);
-    }
+    this.checkForWinning() ;
   }
   changeFightTurns(){
     this.currentPlayer =
@@ -571,6 +569,20 @@ class Game {
       attack2.disabled = false;
       defend2.disabled = false;
     }
+  }
+  checkForWinning(){
+    if (this.players[0].health <= 0 ) {
+      this.announcePlayer(this.players[1].name);
+    }
+    if (this.players[1].health <= 0 ) {
+      this.announcePlayer(this.players[0].name);
+    }
+  }
+  announcePlayer(name) {
+    document.querySelector('main').style.display = 'none' ;
+    document.getElementById('game-over').style.display = 'flex' ;
+    const span = document.getElementById('winner-name');
+    span.textContent = name ;
   }
 }
 // end of game class
