@@ -103,3 +103,22 @@
 .fightbg-false {
   display: none;
 }
+#game-over {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  > h1 {
+    color:darkblue;
+    font-style: italic;
+  }
+   #winner-name {
+    color: #ffc107;
+  }
+  > svg {
+    width: 500px;
+
+  }
+}
