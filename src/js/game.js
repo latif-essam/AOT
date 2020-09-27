@@ -414,6 +414,7 @@ class Game {
     return name;
   }
   clickHandler = (e) => {
+    this.makeAudio("step1", "move1").play();
     const elementBox = this.getBoxItemWithElement(e.target);
     this.updatePlayerBox(elementBox);
     if (elementBox.filledWith === ItemTypes.WEAPON) {
@@ -427,8 +428,8 @@ class Game {
         Math.abs(this.players[0].position.x - this.players[1].position.x) === 1)
     ) {
       this.startAttack();
+      return ;
     }
-    this.makeAudio("step1", "move1").play();
 
     this.changeTurns();
   };
@@ -480,12 +481,12 @@ class Game {
     this.makeHoverEffect();
   }
 
-  // setpup Ui for the fight
+  // setup Ui for the fight
   uiFightGround = () => {
     // clear the map
     gameContainer.innerHTML = "";
-    this.changeTurns();
-
+    // change player fight turn
+    this.changeFightTurns() ;
     // display the buttons
     btnsArray.forEach((btn) => btn.classList.remove("fight"));
     //
@@ -495,7 +496,7 @@ class Game {
     // play background sound
     const bgTrack = new Audio();
     bgTrack.src = "./../audio/bgTrack01.mp3";
-    bgTrack.play();
+    // bgTrack.play();
   };
 
   // attack
@@ -507,19 +508,19 @@ class Game {
     // attack
     attack1.addEventListener("click", () => {
       game.updateUI(actionTypes.ATTACK);
-      game.changeTurns();
+      game.changeFightTurns();
     });
     defend1.addEventListener("click", () => {
       game.updateUI(actionTypes.DEFEND);
-      game.changeTurns();
+      game.changeFightTurns();
     });
     defend2.addEventListener("click", () => {
       game.updateUI(actionTypes.DEFEND);
-      game.changeTurns();
+      game.changeFightTurns();
     });
     attack2.addEventListener("click", () => {
       game.updateUI(actionTypes.ATTACK);
-      game.changeTurns();
+      game.changeFightTurns();
     });
     // this.changeTurns();
     // }
@@ -534,6 +535,7 @@ class Game {
 
   updateUI(actionType) {
     const currentPlayerPower = this.currentPlayer.currentWeapon.power;
+    this.currentPlayer.currentAction = actionType ;
     const notCurrentPlayer = this.noCurrentPlayer();
 
     let damage = currentPlayerPower;
@@ -543,25 +545,31 @@ class Game {
 
     if (actionType === actionTypes.ATTACK) {
       notCurrentPlayer.health -= damage;
-    } else if (actionType === actionType.DEFEND) {
-      this.currentPlayer.currentAction = actionType.DEFEND;
     }
+
+    player1HealthElement.innerHTML = this.players[0].health;
+    player2HealthElement.innerHTML = this.players[1].health;
+    if (this.currentPlayer.health <= 0) {
+      console.log("player win", this.currentPlayer.name);
+    }
+  }
+  changeFightTurns(){
+    this.currentPlayer =
+        this.currentPlayer === this.players[0]
+            ? this.players[1]
+            : this.players[0];
+
     if (this.currentPlayer.title === "player1") {
       attack1.disabled = false;
       defend1.disabled = false;
       attack2.disabled = true;
       defend2.disabled = true;
-      player1HealthElement.innerHTML = this.currentPlayer.currentWeapon.power.toString();
     }
     if (this.currentPlayer.title === "player2") {
       attack1.disabled = true;
       defend1.disabled = true;
       attack2.disabled = false;
       defend2.disabled = false;
-      player2HealthElement.innerHTML = this.currentPlayer.currentWeapon.power.toString();
-    }
-    if (this.currentPlayer.health <= 0) {
-      console.log("player win", this.currentPlayer.name);
     }
   }
 }
