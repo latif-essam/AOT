@@ -1,62 +1,54 @@
-nav {
-  background: url("./../../assets/flash-2568383_1920.jpg");
-}
+// .game-body {
+//   background-color: royalblue;
+// }
 
-nav a {
-  color: #fff;
-  font-size: large;
-}
-nav a:hover {
-  color: gold;
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: indianred;
-}
-
+//change player weaponess
+// let user add the number of walls / obs
+// turn on background sound when fighting
+// player card done
 .player {
   text-align: center;
   border-radius: 10px;
+  margin-bottom: 15px;
   padding: 5px;
-}
-.player p {
-  font-size: large;
-  color: white;
-}
-.player__icon {
-  min-width: 100;
-  width: 150px;
-  max-width: 200px;
-}
+  & p {
+    font-size: large;
+    color: white;
+  }
+  &__icon {
+    min-width: 100;
 
+    width: 150px;
+    max-width: 200px;
+  }
+}
 .game-container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   margin: 0px 0px;
-}
-.game-container .grid-item {
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  text-align: center;
-  border: 2px solid rgba(128, 128, 128, 0.2);
-  margin: 1px;
-}
-@media screen and (min-width: 560px) {
-  .game-container .grid-item {
-    padding: 15px 10px;
-    width: 50px;
-    height: 50px;
+  & .grid-item {
+    @media screen and(min-width:560px) {
+      padding: 10px 10px;
+      width: 50px;
+      height: 50px;
+    }
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid rgba(128, 128, 128, 0.45);
+    margin: 1px;
+    margin-bottom: 15px;
   }
 }
-
+// setting the walls
 .unavailable {
   background-image: url("./../../assets/wall.png");
   background-size: cover;
 }
+
+// setting the weapones
 
 .main {
   background-image: url("./../../assets/halloween.png");
@@ -67,45 +59,39 @@ nav a:hover {
   background-image: url("./../../assets/sword.svg");
   background-size: cover;
 }
-
 .weapon2 {
   background-image: url("./../../assets/sword2.png");
   background-size: cover;
 }
-
 .weapon3 {
-  background-image: url("./../../assets/titan2.png");
+  background-image: url("./../../assets/spear.png");
   background-size: cover;
 }
-
 .weapon4 {
-  background-image: url("./../../assets/titan1.png");
+  background-image: url("./../../assets/staff.png");
   background-size: cover;
 }
 
+// setting players
 .player_one {
   background-image: url("../../assets/mikasa.png");
   background-size: cover;
   border: 2px solid dodgerblue;
 }
-
 .player_two {
   background-image: url("../../assets/levay.png");
   background-size: cover;
   border: 2px solid red;
 }
 
-.box-hover:hover {
-  background-color: #1c7430;
-  cursor: pointer;
-}
+// set available moves
 
 .fight {
   display: none;
 }
-
 .box-hover:hover {
-  background-color: #1c7430;
+  border: 2px dotted #ee5522;
+  // background-color: #ee5522;
   cursor: pointer;
 }
 
@@ -115,18 +101,15 @@ nav a:hover {
   min-height: 400px;
   margin-top: 15px;
 }
-
 .fight__bg2 {
   background-image: url("./../../assets/bg1.jpg");
   background-size: cover;
   min-height: 400px;
   margin-top: 15px;
 }
-
 .fightbg-false {
   display: none;
 }
-
 #game-over {
   display: none;
   width: 100%;
@@ -134,16 +117,14 @@ nav a:hover {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  > h1 {
+    color: darkblue;
+    font-style: italic;
+  }
+  #winner-name {
+    color: #ffc107;
+  }
+  > svg {
+    width: 500px;
+  }
 }
-#game-over > h1 {
-  color: darkblue;
-  font-style: italic;
-}
-#game-over #winner-name {
-  color: #ffc107;
-}
-#game-over > svg {
-  width: 500px;
-}
-
-/*# sourceMappingURL=style.css.map */

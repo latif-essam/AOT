@@ -6,8 +6,6 @@ const player1StatusSection = document.getElementById("player1");
 const player2StatusSection = document.getElementById("player2");
 const Player1PowerElement = document.querySelector("#power1");
 const Player2PowerElement = document.querySelector("#power2");
-// const Player1WeaponElement = document.querySelector("#weapon1");
-// const Player2WeaponElement = document.querySelector("#weapon2");
 
 const gameContainer = document.getElementById("game-container");
 const gameFight_bg = document.getElementById("fight-bg");
@@ -18,7 +16,6 @@ const defend1 = document.getElementById("defend1");
 const attack2 = document.getElementById("attack2");
 const defend2 = document.getElementById("defend2");
 const btnsArray = [attack1, defend1, attack2, defend2];
-// store all the weapons and their power
 
 // default and the main weapon for each player
 const defaultWeapon = {
@@ -26,6 +23,7 @@ const defaultWeapon = {
   power: 10,
 };
 
+// store all the weapons and their power
 const weapons = [
   {
     name: "weapon1",
@@ -155,9 +153,13 @@ class Game {
      */
     this.boxes = [];
     this.players = this.initializePlayers();
-
+    this.obs = localStorage["obs"];
+    this.moveSound = localStorage["sound"];
+    this.musicSound = localStorage["music"];
+    console.log("sounds:", this.moveSound);
+    console.log("music", this.musicSound);
     this.generateMap();
-    this.placeObstacles(4);
+    this.placeObstacles(this.obs);
     this.placeWeapons();
     this.placePlayers();
 
@@ -383,6 +385,7 @@ class Game {
     if (this.currentElementsToMoveIn) {
       this.currentElementsToMoveIn.forEach((element) => {
         element.classList.add("box-hover");
+
         element.addEventListener("click", this.clickHandler);
       });
     }
@@ -414,12 +417,16 @@ class Game {
     return name;
   }
   clickHandler = (e) => {
-    this.makeAudio("step1", "move1").play();
+    if (this.moveSound === "true") {
+      this.makeAudio("step1", "move1").play();
+      console.log(this.moveSound);
+    }
     const elementBox = this.getBoxItemWithElement(e.target);
     this.updatePlayerBox(elementBox);
     if (elementBox.filledWith === ItemTypes.WEAPON) {
       this.updatePlayerWeapon(elementBox);
     }
+    // check player postion
     if (
       (this.players[0].position.x === this.players[1].position.x &&
         Math.abs(this.players[0].position.y - this.players[1].position.y) ===
@@ -428,7 +435,7 @@ class Game {
         Math.abs(this.players[0].position.x - this.players[1].position.x) === 1)
     ) {
       this.startAttack();
-      return ;
+      return;
     }
 
     this.changeTurns();
@@ -486,24 +493,23 @@ class Game {
     // clear the map
     gameContainer.innerHTML = "";
     // change player fight turn
-    this.changeFightTurns() ;
+    this.changeFightTurns();
     // display the buttons
     btnsArray.forEach((btn) => btn.classList.remove("fight"));
     //
     gameFight_bg.classList.remove("fightbg-false");
     gameFight_bg.classList.add("fight__bg1");
+    // attack song here
 
-    // play background sound
-    const bgTrack = new Audio();
-    bgTrack.src = "./../audio/bgTrack01.mp3";
-    // bgTrack.play();
+    if (this.musicSound === "true") {
+      this.makeAudio("fight", "bgTrack01").play();
+    }
   };
 
   // attack
   startAttack = () => {
+    // setup the fight ring
     this.uiFightGround();
-
-    // need to loop till one of the player loss
 
     // attack
     attack1.addEventListener("click", () => {
@@ -522,8 +528,6 @@ class Game {
       game.updateUI(actionTypes.ATTACK);
       game.changeFightTurns();
     });
-    // this.changeTurns();
-    // }
   };
 
   // get other player statust and values info, ex: health,power,current weapon
@@ -535,7 +539,7 @@ class Game {
 
   updateUI(actionType) {
     const currentPlayerPower = this.currentPlayer.currentWeapon.power;
-    this.currentPlayer.currentAction = actionType ;
+    this.currentPlayer.currentAction = actionType;
     const notCurrentPlayer = this.noCurrentPlayer();
 
     let damage = currentPlayerPower;
@@ -547,15 +551,16 @@ class Game {
       notCurrentPlayer.health -= damage;
     }
 
-    player1HealthElement.innerHTML = this.players[0].health;
-    player2HealthElement.innerHTML = this.players[1].health;
-    this.checkForWinning() ;
+    player1HealthElement.innerHTML = this.players[0].health.toString();
+    player2HealthElement.innerHTML = this.players[1].health.toString();
+
+    this.checkForWinning();
   }
-  changeFightTurns(){
+  changeFightTurns() {
     this.currentPlayer =
-        this.currentPlayer === this.players[0]
-            ? this.players[1]
-            : this.players[0];
+      this.currentPlayer === this.players[0]
+        ? this.players[1]
+        : this.players[0];
 
     if (this.currentPlayer.title === "player1") {
       attack1.disabled = false;
@@ -570,19 +575,19 @@ class Game {
       defend2.disabled = false;
     }
   }
-  checkForWinning(){
-    if (this.players[0].health <= 0 ) {
+  checkForWinning() {
+    if (this.players[0].health <= 0) {
       this.announcePlayer(this.players[1].name);
     }
-    if (this.players[1].health <= 0 ) {
+    if (this.players[1].health <= 0) {
       this.announcePlayer(this.players[0].name);
     }
   }
   announcePlayer(name) {
-    document.querySelector('main').style.display = 'none' ;
-    document.getElementById('game-over').style.display = 'flex' ;
-    const span = document.getElementById('winner-name');
-    span.textContent = name ;
+    document.querySelector("main").style.display = "none";
+    document.getElementById("game-over").style.display = "flex";
+    const span = document.getElementById("winner-name");
+    span.textContent = name;
   }
 }
 // end of game class

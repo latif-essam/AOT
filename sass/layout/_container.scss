@@ -1,0 +1,101 @@
+body {
+  background-color: white;
+}
+.home-body {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23220000' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23440000' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23660000' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23880000' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23A00' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+// right section in index
+.game-intro {
+  text-align: center;
+  width: 100%;
+  padding: 30px 0px;
+}
+
+// left
+main .left {
+  background-color: #333333;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%232b2b2b' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+  color: white;
+  font-size: 20px;
+  line-height: 250%;
+}
+
+a#startGame {
+  font-size: 50px;
+  margin: 15px;
+  margin: 0px 50px;
+  color: goldenrod;
+  &:hover {
+    color: white;
+    background-color: #ee5522;
+  }
+}
+
+/* range styles  */
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 20px 0;
+  width: 100%;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  animation: 0.2s;
+  background: #03a9f4;
+  border-radius: 25px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 1);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #03a9f4;
+}
+.range-wrap {
+  width: 300px;
+  position: relative;
+}
+.range-value {
+  position: absolute;
+  top: -50%;
+}
+.range-value span {
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #03a9f4;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
+}
+.range-value span:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #03a9f4;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}

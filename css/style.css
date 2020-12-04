@@ -1,0 +1,403 @@
+.chkbx input[type=checkbox] {
+  display: none;
+}
+
+.chkbx {
+  position: relative;
+  cursor: pointer;
+}
+.chkbx .x {
+  display: block;
+  width: 180px;
+  height: 80px;
+  border: 2px solid #d3d3be;
+  border-radius: 60px;
+  transition: 0.5s;
+}
+.chkbx .x:before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 7px;
+  left: 7px;
+  box-sizing: border-box;
+  background: #d3d3be;
+  border: 2px solid #d3d3be;
+  border-radius: 40px;
+  transition: 0.5s;
+}
+.chkbx :checked ~ .x:before {
+  background: #fe7f2d;
+  border-color: #fe7f2d;
+  transform: translatex(100px);
+}
+.chkbx :checked ~ .x {
+  border-color: #fe7f2d;
+}
+
+nav {
+  background: url("./../../assets/flash-2568383_1920.jpg");
+  height: 250px;
+  background-color: #ee5522;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23ca481d' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+nav a.navbar-brand {
+  color: #fff;
+  font-size: 50px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+}
+nav a.navbar-brand:hover {
+  color: gold;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: indianred;
+}
+
+body {
+  background-color: white;
+}
+
+.home-body {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23220000' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23440000' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23660000' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23880000' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23A00' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.game-intro {
+  text-align: center;
+  width: 100%;
+  padding: 30px 0px;
+}
+
+main .left {
+  background-color: #333333;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%232b2b2b' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+  color: white;
+  font-size: 20px;
+  line-height: 250%;
+}
+
+a#startGame {
+  font-size: 50px;
+  margin: 15px;
+  margin: 0px 50px;
+  color: goldenrod;
+}
+a#startGame:hover {
+  color: white;
+  background-color: #ee5522;
+}
+
+/* range styles  */
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px 0;
+  width: 100%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  animation: 0.2s;
+  background: #03a9f4;
+  border-radius: 25px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px 0 black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #03a9f4;
+}
+
+.range-wrap {
+  width: 300px;
+  position: relative;
+}
+
+.range-value {
+  position: absolute;
+  top: -50%;
+}
+
+.range-value span {
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #03a9f4;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
+}
+
+.range-value span:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #03a9f4;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}
+
+.cls-1 {
+  fill: #2c51a3;
+}
+
+.cls-2 {
+  fill: #faaf4c;
+}
+
+.cls-3 {
+  fill: #f16279;
+}
+
+.cls-4 {
+  fill: #78c8aa;
+}
+
+.cls-5 {
+  fill: none;
+  stroke-width: 6px;
+}
+
+.cls-5,
+.cls-6 {
+  stroke: #000;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.mask {
+  fill: black;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+#squiggle-mask-path {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: animate-stroke 1s 1.1s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+#left-line-mask-path {
+  stroke-dasharray: 38;
+  stroke-dashoffset: -38;
+  animation: animate-stroke 1s 1.2s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+#right-line-mask-path {
+  stroke-dasharray: 38;
+  stroke-dashoffset: -38;
+  animation: animate-stroke 1s 1.2s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+@keyframes animate-stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+#mint-burst {
+  transform: translateY(70px);
+  animation: move-stars 1s 1s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+#yellow-burst {
+  transform: translate(40px, 10px);
+  animation: move-stars 1s 1s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+#red-burst {
+  transform: translate(-40px, 10px);
+  animation: move-stars 1s 1s forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+#blue-star {
+  transform: translate(10px, 40px);
+  animation: move-stars 1s 1025ms forwards cubic-bezier(0, 1, 0.53, 1);
+  display: inherit;
+}
+
+#yellow-star {
+  transform: translate(-10px, 45px);
+  animation: move-stars 1s 1050ms forwards cubic-bezier(0, 1, 0.53, 1);
+}
+
+@keyframes move-stars {
+  100% {
+    transform: translateY(0);
+  }
+}
+.dot {
+  animation: reveal-dots 0.9s 1.2s both cubic-bezier(0, 1, 0.53, 1);
+  opacity: 0;
+  transform: translate(-5px, 10px);
+}
+
+.dot.left-side {
+  transform: translate(5px, 10px);
+}
+
+@keyframes reveal-dots {
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.player {
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+.player p {
+  font-size: large;
+  color: white;
+}
+.player__icon {
+  min-width: 100;
+  width: 150px;
+  max-width: 200px;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  margin: 0px 0px;
+}
+.game-container .grid-item {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid rgba(128, 128, 128, 0.45);
+  margin: 1px;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 560px) {
+  .game-container .grid-item {
+    padding: 10px 10px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.unavailable {
+  background-image: url("./../../assets/wall.png");
+  background-size: cover;
+}
+
+.main {
+  background-image: url("./../../assets/halloween.png");
+  background-size: cover;
+}
+
+.weapon1 {
+  background-image: url("./../../assets/sword.svg");
+  background-size: cover;
+}
+
+.weapon2 {
+  background-image: url("./../../assets/sword2.png");
+  background-size: cover;
+}
+
+.weapon3 {
+  background-image: url("./../../assets/spear.png");
+  background-size: cover;
+}
+
+.weapon4 {
+  background-image: url("./../../assets/staff.png");
+  background-size: cover;
+}
+
+.player_one {
+  background-image: url("../../assets/mikasa.png");
+  background-size: cover;
+  border: 2px solid dodgerblue;
+}
+
+.player_two {
+  background-image: url("../../assets/levay.png");
+  background-size: cover;
+  border: 2px solid red;
+}
+
+.fight {
+  display: none;
+}
+
+.box-hover:hover {
+  border: 2px dotted #ee5522;
+  cursor: pointer;
+}
+
+.fight__bg1 {
+  background-image: url("./../../assets/bg2.jpg");
+  background-size: cover;
+  min-height: 400px;
+  margin-top: 15px;
+}
+
+.fight__bg2 {
+  background-image: url("./../../assets/bg1.jpg");
+  background-size: cover;
+  min-height: 400px;
+  margin-top: 15px;
+}
+
+.fightbg-false {
+  display: none;
+}
+
+#game-over {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+#game-over > h1 {
+  color: darkblue;
+  font-style: italic;
+}
+#game-over #winner-name {
+  color: #ffc107;
+}
+#game-over > svg {
+  width: 500px;
+}
+
+/*# sourceMappingURL=style.css.map */

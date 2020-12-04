@@ -1,0 +1,41 @@
+$background: #233d4d;
+$border-before: #d3d3be;
+$border-before-clicked: #fe7f2d;
+
+.chkbx input[type="checkbox"] {
+  display: none;
+}
+
+.chkbx {
+  position: relative;
+  cursor: pointer;
+  .x {
+    display: block;
+    width: 180px;
+    height: 80px;
+    border: 2px solid $border-before;
+    border-radius: 60px;
+    transition: 0.5s;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: 7px;
+      left: 7px;
+      box-sizing: border-box;
+      background: $border-before;
+      border: 2px solid $border-before;
+      border-radius: 40px;
+      transition: 0.5s;
+    }
+  }
+  :checked ~ .x:before {
+    background: $border-before-clicked;
+    border-color: $border-before-clicked;
+    transform: translatex(100px);
+  }
+  :checked ~ .x {
+    border-color: $border-before-clicked;
+  }
+}
