@@ -8,17 +8,17 @@
 }
 .chkbx .x {
   display: block;
-  width: 180px;
-  height: 80px;
+  width: 80px;
+  height: 35px;
   border: 2px solid #d3d3be;
-  border-radius: 60px;
+  border-radius: 70px;
   transition: 0.5s;
 }
 .chkbx .x:before {
   content: "";
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 22px;
+  height: 22px;
   top: 7px;
   left: 7px;
   box-sizing: border-box;
@@ -28,12 +28,19 @@
   transition: 0.5s;
 }
 .chkbx :checked ~ .x:before {
-  background: #fe7f2d;
-  border-color: #fe7f2d;
-  transform: translatex(100px);
+  background: #28a745;
+  border-color: #28a745;
+  transform: translatex(40px);
 }
 .chkbx :checked ~ .x {
-  border-color: #fe7f2d;
+  border-color: #28a745;
+}
+
+.list-group-item {
+  background-color: transparent;
+  color: white;
+  font-size: larger;
+  border: none;
 }
 
 nav {
